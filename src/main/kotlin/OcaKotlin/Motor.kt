@@ -18,12 +18,41 @@ class OcaGame(val jugadors: List<Jugador>) {
     fun moure(player: Jugador, moviment: Int, ronda: Int, rondaPartida: Int) {
         player.posicio += moviment
         if (player.nortirar == false) {
-            println("${player.nom} et mous fins la posicio ${player.posicio}")
+            println("${player.nom} te mueves hasta la poscion ${player.posicio}")
         }
 
         if (player.posicio >= 63) {
             player.posicio = 63
-            println("Has guanyat!!!")
+            println("                           .-----.\n" +
+                    "                         .'       `.\n" +
+                    "                        :    Has    :\n" +
+                    "                        :   Ganado!! :\n" +
+                    "                        '           '\n" +
+                    "         |~        www   `.       .'\n" +
+                    "        /.\\       /#^^\\_   `-/\\--'\n" +
+                    "       /#  \\     /#%    \\   /# \\\n" +
+                    "      /#%   \\   /#%______\\ /#%__\\\n" +
+                    "     /#%     \\   |= I I ||  |- |\n" +
+                    "     ~~|~~~|~~   |_=_-__|'  |[]|\n" +
+                    "       |[] |_______\\__|/_ _ |= |`.\n" +
+                    "^V^    |-  /= __   __    /-\\|= | :;\n" +
+                    "       |= /- /\\/  /\\/   /=- \\.-' :;\n" +
+                    "       | /_.=========._/_.-._\\  .:'\n" +
+                    "       |= |-.'.- .'.- |  /|\\ |.:'\n" +
+                    "       \\  |=|:|= |:| =| |~|~||'|\n" +
+                    "        |~|-|:| -|:|  |-|~|~||=|      ^V^\n" +
+                    "        |=|=|:|- |:|- | |~|~|| |\n" +
+                    "        | |-_~__=_~__=|_^^^^^|/___\n" +
+                    "        |-(=-=-=-=-=-(|=====/=_-=/\\\n" +
+                    "        | |=_-= _=- _=| -_=/=_-_/__\\ \n" +
+                    "        | |- _ =_-  _-|=_- |]#| I II\n" +
+                    "        |=|_/ \\_-_= - |- = |]#| I II\n" +
+                    "        | /  _/ \\. -_=| =__|]!!!I_II!!\n" +
+                    "       _|/-'/  ` \\_/ \\|/' _ ^^^^`.==_^.\n" +
+                    "     _/  _/`-./`-; `-.\\_ / \\_'\\`. `. ===`.\n" +
+                    "    / .-'  __/_   `.   _/.' .-' `-. ; ====;\\\n" +
+                    "   /.   `./    \\ `. \\ / -  /  .-'.' ====='  >\n" +
+                    "  /  \\  /  .-' `--.  / .' /  `-.' ======.' /")
             return
         }
 
@@ -34,7 +63,7 @@ class OcaGame(val jugadors: List<Jugador>) {
         if (casella.mouPosicions == 4) {
             player.posicio += casella.mouPosicions
             println(
-                "De oca a oca i tiro porque me toca" +
+                "De oca a oca y tiro porque me toca" +
                         "            @*@  /&                      \n" +
                         "           @#@%      *                  \n" +
                         "      @   &             %               \n" +
@@ -64,10 +93,49 @@ class OcaGame(val jugadors: List<Jugador>) {
                         "    @                    @       @ "
             )
             val dau = tirarDau()
-            println("${player.nom} ha tret un: $dau")
+            println("${player.nom} ha sacado un: $dau")
 
 
         }
+        //Puentes
+        if (casella.mouPosicions == 4) {
+            player.posicio += casella.mouPosicions
+            println(
+                "De puente a puente y tiro porque me da la corriente" +
+                        "            @*@  /&                      \n" +
+                        "           @#@%      *                  \n" +
+                        "      @   &             %               \n" +
+                        "      # @       . @     &               \n" +
+                        "      %        @                        \n" +
+                        "       @@ @@        @                   \n" +
+                        "           @      @                     \n" +
+                        "                 #                      \n" +
+                        "                                        \n" +
+                        "           @                            \n" +
+                        "                  @               @@    \n" +
+                        "                   /              @     \n" +
+                        "        @           @          @        \n" +
+                        "     &                 @   @.         @ \n" +
+                        "                                        \n" +
+                        " @                                     .\n" +
+                        "                                @       \n" +
+                        "            @           (         %     \n" +
+                        " / @         (       @         /        \n" +
+                        "   @            @        @@    @   @    \n" +
+                        "      @              @&  @      @       \n" +
+                        "         @                  #           \n" +
+                        "            #      /     @              \n" +
+                        "              %        #                \n" +
+                        "       %@           @       *@          \n" +
+                        "                      /           ,     \n" +
+                        "    @                    @       @ "
+            )
+            val dau = tirarDau()
+            println("${player.nom} has sacado un: $dau")
+
+
+        }
+
 
         //Dau bo
         else if (casella.mouPosicions == 25 || casella.mouPosicions == -25) {
@@ -96,11 +164,11 @@ class OcaGame(val jugadors: List<Jugador>) {
                         "                            &&&&%.            &    &%                           \n" +
                         "                                      .&&&&&&&&&&&        "
             )
-            println("${player.nom} et mous fins la posicio ${player.posicio}")
+            println("${player.nom} te mueves hasta la poscion ${player.posicio}")
             val dau = tirarDau()
             player.posicio += dau
-            println("${player.nom} ha tret un: $dau")
-            println("${player.nom} et mous fins la posicio ${player.posicio}")
+            println("${player.nom} has sacado un: $dau")
+            println("${player.nom} te mueves hasta la poscion ${player.posicio}")
         }
 
         //Calavera
@@ -141,13 +209,40 @@ class OcaGame(val jugadors: List<Jugador>) {
                         "           @@@@.                                                  @@@@          \n" +
                         "                                                                       "
             )
-            println("${player.nom} et mous fins la posicio ${player.posicio}")
+            println("${player.nom} te mueves hasta ${player.posicio}")
         }
 
 
         //Carcel
         else if (casella.perdsPartides == 3) {
-            println("Has sido arrestado ahora te tienes que quedar 3 turnos aqui")
+            println("Has sido arrestado ahora te tienes que quedar 3 turnos aqui" +
+                    "%                                                                            @\n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (        @@  (         @  (         @  (         @  (@@       @  /     \n" +
+                    "      @  (      @  @  (         @  (         @  (         @  (   @     @  /     \n" +
+                    "      @  (      .  @  (         @  (         @  (         @  (   .     @  /     \n" +
+                    "      @  (   @(        @        @  (         @  (         @        (@  @  /     \n" +
+                    "      @  (  /    @@@@(. @       @  (         @  (        @ .(@@@@    ( @  /     \n" +
+                    "      @  (  @           @       @  (         @  (        @           @ @  /     \n" +
+                    "      @  (  @    .,,,,. @       @  (         @  (        @ .,,*,.    @ @  /     \n" +
+                    "      @  (  @           @       @  (         @  (        @           @ @  /     \n" +
+                    "      @  (  .,   ./#&@@@/       @  (         @  (        /@@@&#/,   ,. @  /     \n" +
+                    "      @  (   /          @       @  (         @  (        @          (  @  /     \n" +
+                    "      @  (      .,*@. (         @  (         @  (         @  (,*,.     @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "      @  (         @  (         @  (         @  (         @  (         @  /     \n" +
+                    "  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" +
+                    "  %                                                                            @")
             player.nortirar = true
             if (ronda == rondaPartida - 2) {
                 player.nortirar = false
@@ -202,12 +297,12 @@ class OcaGame(val jugadors: List<Jugador>) {
                 jugadors[i].turno = true
                 if (!jugadors[i].nortirar) {
                     val roll = tirarDau()
-                    println("${jugadors[i].nom} ha tret un: $roll")
+                    println("${jugadors[i].nom} sacado un: $roll")
                     moure(jugadors[i], roll, jugadors[i].ronda, rondaPartida)
                     jugadors[i].ronda = rondaPartida
 
                 } else {
-                    println("${jugadors[i].nom} se li salta el torn")
+                    println("A ${jugadors[i].nom} se le salta el turno")
                     moure(jugadors[i], 0, jugadors[i].ronda, rondaPartida)
 
                 }
